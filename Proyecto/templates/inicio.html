@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sistema de Gestión de Postulantes</h1>
+        <p class="lead">Seleccione una de las opciones disponibles</p>
+
+        <div class="row">
+            <div class="card">
+                <h5 class="card-title">Buscar Postulantes</h5>
+                <p class="card-text">Consultar postulantes según su estado de postulación.</p>
+                <form action="{{ url_for('postulantes_estado') }}" method="GET">
+                    <button type="submit">Ir a búsqueda</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h5 class="card-title">Registrar Persona</h5>
+                <p class="card-text">Registrar los datos y dirección de una nueva persona.</p>
+                <form action="{{ url_for('registro_persona') }}" method="GET">
+                    <button type="submit">Registrar</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h5 class="card-title">Resumen de Revisor</h5>
+                <p class="card-text">Consultar el resumen y detalle de evaluaciones realizadas por un revisor.</p>
+                <form action="{{ url_for('resumen_revisor') }}" method="GET">
+                    <button type="submit">Ver resumen</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h5 class="card-title">Consultas de Postulación</h5>
+                <p class="card-text">Consultar becarios por programa o postulantes por periodo académico.</p>
+                <form action="{{ url_for('consultas_postulacion') }}" method="GET">
+                    <button type="submit">Ir a consultas</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h5 class="card-title"> Eliminar Postulación</h5>
+                <p class="card-text">Eliminar la postulación de una persona según su DNI.</p>
+                <form action="{{ url_for('eliminar_postulacion') }}" method="GET">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h5 class="card-title">Gestión de Histórico</h5>
+                <p class="card-text">Actualizar periodo académico y consultar registros históricos de postulación.</p>
+                <form action="{{ url_for('gestionar_historico') }}" method="GET">
+                    <button type="submit">Gestionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

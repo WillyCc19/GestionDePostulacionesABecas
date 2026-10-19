@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Persona y Dirección</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/paginas.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar Persona y Dirección</h2>
+
+        <form method="POST">
+            <fieldset>
+                <legend>Datos de la Persona</legend>
+                <input type="text" name="dni" placeholder="DNI" required>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellidopaterno" placeholder="Apellido Paterno" required>
+                <input type="text" name="apellidomaterno" placeholder="Apellido Materno" required>
+                <input type="date" name="fecha_nacimiento" required>
+                <input type="text" name="telefono" placeholder="Teléfono" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dirección</legend>
+                <input type="text" name="nombre_departamento" placeholder="Departamento (ej. Lima)" required>
+                <input type="text" name="ciudad" placeholder="Ciudad" required>
+                <input type="text" name="distrito" placeholder="Distrito" required>
+                <input type="text" name="direccion_detalle" placeholder="Dirección Detallada" required>
+            </fieldset>
+
+            <button type="submit">Registrar</button>
+        </form>
+
+        {% if mensaje %}
+            <p><strong>{{ mensaje }}</strong></p>
+        {% endif %}
+
+        <form action="{{ url_for('inicio') }}" method="GET">
+            <button type="submit">Volver al inicio</button>
+        </form>
+
+        {% if personas %}
+            <hr>
+            <h2>Personas Registradas con Dirección</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre Completo</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Departamento</th>
+                        <th>Ciudad</th>
+                        <th>Distrito</th>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in personas %}
+                    <tr>
+                        <td>{{ p.dni }}</td>
+                        <td>{{ p.NombreCompleto }}</td>
+                        <td>{{ p.fecha_nacimiento }}</td>
+                        <td>{{ p.nombre_departamento }}</td>
+                        <td>{{ p.Ciudad }}</td>
+                        <td>{{ p.Distrito }}</td>
+                        <td>{{ p.direccion_detalle }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
+
